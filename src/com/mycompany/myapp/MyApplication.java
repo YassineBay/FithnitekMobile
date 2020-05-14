@@ -13,6 +13,7 @@ import com.codename1.ui.Toolbar;
 import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
+import com.mycompany.myapp.gui.GUIAddMyCard;
 import com.mycompany.myapp.gui.GUINotifications;
 
 /**
@@ -48,7 +49,8 @@ public class MyApplication {
     }
     
     public void start() {
-        new GUINotifications().show();
+        new GUINotifications(current).show();
+        //new GUIAddMyCard(current).show();
     }
 
     public void stop() {

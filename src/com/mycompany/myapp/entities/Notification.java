@@ -13,7 +13,26 @@ public class Notification {
     
     private int id;
     private String Content;
+    private String Sender;
+    private String Retriever;
+    private Colis colis;
 
+    public String getSender() {
+        return Sender;
+    }
+
+    public void setSender(String Sender) {
+        this.Sender = Sender;
+    }
+
+    public String getRetriever() {
+        return Retriever;
+    }
+
+    public void setRetriever(String Retriever) {
+        this.Retriever = Retriever;
+    }
+   
     public int getId() {
         return id;
     }
@@ -28,6 +47,14 @@ public class Notification {
 
     public void setContent(String Content) {
         this.Content = Content;
+    }
+
+    public Colis getColis() {
+        return colis;
+    }
+
+    public void setColis(Colis colis) {
+        this.colis = colis;
     }
     
     

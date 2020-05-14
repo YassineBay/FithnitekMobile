@@ -7,7 +7,6 @@ package com.mycompany.myapp.entities;
 
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.Button;
 
 /**
  *
@@ -20,7 +19,7 @@ public class Colis {
     private String date_limit ;       
     private String label ;       
     private String description ;
-    private String Image;
+    private String image;
     private double reward;
     private List<Element> elements ;
     private int idUtilisateur ;    
@@ -28,14 +27,15 @@ public class Colis {
    
     public Colis(){}
 
-    public Colis(int id, String depart, String destination, String date_limit, String label, String description,  int idUtilisateur) {
+    public Colis(int id, String depart, String destination, String date_limit, String label, String description,  double idUtilisateur , String image) {
         this.id = id;
         this.depart = depart;
         this.destination = destination;
         this.date_limit = date_limit;
         this.label = label;
         this.description = description;
-        this.idUtilisateur = idUtilisateur;
+        this.reward = reward;
+        this.image = image;
         
         
     }
@@ -62,11 +62,11 @@ public class Colis {
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public void setImage(String Image) {
-        this.Image = Image;
+        this.image = Image;
     }
 
     public void setId(int id) {

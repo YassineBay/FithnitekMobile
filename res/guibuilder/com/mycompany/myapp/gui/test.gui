@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" layout="LayeredLayout" layeredLayoutPreferredWidthMM="0.0" layeredLayoutPreferredHeightMM="0.0"  autolayout="true" title="test" scrollableY="true" name="test">
+  <component type="Button" text="Button" name="Button">
+    <layoutConstraint insets="31.368822% auto auto 42.436974%" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+  </component>
+  <component type="RadioButton" text="Radio" name="Radio_Button">
+    <layoutConstraint insets="auto 20.308123% 43.726234% auto" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+  </component>
+  <component type="SpanButton" text="Span Button" name="Span_Button">
+    <layoutConstraint insets="20.152092% 10.92437% auto auto" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+  </component>
+</component>

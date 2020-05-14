@@ -17,6 +17,7 @@ public class Personne extends Utilisateur {
     private String sexe;
     private String nom;
     private String prenom;
+    private String CardNumber;
     private String image;
     private int cin;
     private int num_tel;
@@ -89,5 +90,15 @@ public class Personne extends Utilisateur {
 
     public void setSexe(ComboBox<String> ZoneSexe) {
     }
+
+    public String getCardNumber() {
+        return CardNumber;
+    }
+
+    public void setCardNumber(String CardNumber) {
+        this.CardNumber = CardNumber;
+    }
+    
+    
 
 }
