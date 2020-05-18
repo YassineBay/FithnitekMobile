@@ -14,6 +14,7 @@ import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
 import com.mycompany.myapp.gui.GUIAddMyCard;
+import com.mycompany.myapp.gui.GUIHomePage;
 import com.mycompany.myapp.gui.GUINotifications;
 
 /**
@@ -49,8 +50,9 @@ public class MyApplication {
     }
     
     public void start() {
-        new GUINotifications(current).show();
+        //new GUINotifications(current).show();
         //new GUIAddMyCard(current).show();
+        new GUIHomePage(current).show();
     }
 
     public void stop() {

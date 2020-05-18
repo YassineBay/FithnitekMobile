@@ -10,9 +10,9 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Card;
-import com.mycompany.myapp.entities.Personne;
-import com.mycompany.myapp.utils.Statics;
 import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class PayementService {
         
-    public ArrayList<Card> tasks;
+    public ArrayList<Card> Cards;
     public static PayementService instance=null;
     public boolean resultOK;
     private ConnectionRequest req;
@@ -56,5 +56,30 @@ public class PayementService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
     }
-    
+        
+        
+        public Card getCardDetail(int id){
+            Card card = new Card();
+            String url = "http://127.0.0.1:8000/payement/api/MyCardDetail?id="+id;
+            req.setUrl(url);
+            req.setPost(false);
+            req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                
+                try {
+                    JSONObject obj = new JSONObject(new String(req.getResponseData()));
+                    System.out.println(new String(req.getResponseData()));
+                    String holderName = obj.getString("name");
+                    card.setNom(holderName);
+                    req.removeResponseListener(this);
+                } catch (JSONException ex) {
+                }
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return card;
+                    }
+        
+        
 }

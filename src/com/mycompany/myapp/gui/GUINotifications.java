@@ -18,6 +18,7 @@ import com.codename1.ui.Button;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.URLImage;
 import com.mycompany.myapp.entities.Notification;
+import com.mycompany.myapp.entities.Utilisateur;
 import com.mycompany.myapp.services.NotificationService;
 import com.mycompany.myapp.utils.Statics;
 
@@ -37,7 +38,9 @@ public class GUINotifications extends Form {
     public GUINotifications(Form f) {
             setTitle("Notifications");
             setLayout(BoxLayout.y());
-            for(Notification n :NotificationService.getInstance().getAllNotifications()){           
+            Utilisateur testUser = new Utilisateur();
+            testUser.setId(2);
+            for(Notification n :NotificationService.getInstance().getAllNotifications(testUser.getId())){           
             Container con = new Container(new FlowLayout());
             Image imageNotif = null;
         try {
@@ -90,11 +93,17 @@ public class GUINotifications extends Form {
                         btnGoBack);
                 detailColisForm.show();
             });
+             
            
             con.addAll(ivNotif,txtNotifContent,bShowDetails);
-            add(con);
+             add(con);
             }
-      
+      Button goBackHome = new Button("Home");
+            goBackHome.addActionListener((e)->{
+            new GUIHomePage(f).show();
+            });
+            add(goBackHome);
+
             
     }
 

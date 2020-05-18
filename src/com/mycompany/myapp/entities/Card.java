@@ -19,6 +19,9 @@ public class Card {
         this.prenom = prenom;
         this.CardNumber = CardNumber;
     }
+
+    public Card() {
+    }
     
     public String getNom() {
         return nom;

@@ -5,6 +5,7 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.db.Database;
 import com.codename1.ui.Button;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Form;
@@ -16,6 +17,7 @@ import com.codename1.ui.layouts.GridBagLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.mycompany.myapp.entities.Card;
 import com.mycompany.myapp.services.PayementService;
+import java.io.IOException;
 
 /**
  *
@@ -23,8 +25,26 @@ import com.mycompany.myapp.services.PayementService;
  */
 public class GUIAddMyCard extends Form {
     
+    Database db;
+    boolean created;
+    
     public GUIAddMyCard(Form f){
+        /* try {
+            Database.delete("Mydb.db");
+        } catch (IOException ex) {
+        }>>>>>>>>>>>>>>> IN CASE WHENE DATABASE OR TABLE DOES NOT EXIST WE SHOULD ADD THIS BLOCK EXECUTE IT ONCE THEN COMMENT IT*/
+        created = db.exists("MyDB.db");
         
+        try {
+            db = Database.openOrCreate("MyDB.db");
+            if(!created){
+                db.execute("create table CardDetail (id INTEGER ,isRegistred )");
+                db.execute("INSERT INTO CardDetail (isRegistred) VALUES ('0')");
+                System.out.println("Database created !");
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         setTitle("Register Card");
         setLayout(new FlowLayout());
         Label firstNameTxt = new Label("First Name : ");
@@ -46,8 +66,13 @@ public class GUIAddMyCard extends Form {
         String cardNumberLbl = cardNumbertxtF.getText();
         Card card = new Card(nameLbl, nameLbl, cardNumberLbl);
         //new USer
-        if(PayementService.getInstance().addCard(card,1)){
+        if(PayementService.getInstance().addCard(card,4)){
         Dialog.show("Success", "Your card has been added","OK",null);
+           try {
+                db.execute("UPDATE CardDetail SET isRegistred =1");
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            } 
         }
         else{
           Dialog.show("Error", "Your card has not been added","OK",null);

@@ -75,8 +75,8 @@ public class NotificationService {
         return notifications;
     }
      
-     public ArrayList<Notification> getAllNotifications(){
-        String url = Statics.BASE_URL+"notifications";
+     public ArrayList<Notification> getAllNotifications(int id){
+        String url = Statics.BASE_URL+"notifications?idpropc="+id;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
