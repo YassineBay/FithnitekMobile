@@ -15,11 +15,13 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import java.io.IOException;
 import com.codename1.ui.Button;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.URLImage;
 import com.mycompany.myapp.entities.Notification;
 import com.mycompany.myapp.entities.Utilisateur;
 import com.mycompany.myapp.services.NotificationService;
+import com.mycompany.myapp.services.PayementService;
 import com.mycompany.myapp.utils.Statics;
 
 
@@ -39,7 +41,7 @@ public class GUINotifications extends Form {
             setTitle("Notifications");
             setLayout(BoxLayout.y());
             Utilisateur testUser = new Utilisateur();
-            testUser.setId(2);
+            testUser.setId(1);
             for(Notification n :NotificationService.getInstance().getAllNotifications(testUser.getId())){           
             Container con = new Container(new FlowLayout());
             Image imageNotif = null;
@@ -54,6 +56,7 @@ public class GUINotifications extends Form {
             Button bShowDetails = new Button("Show Details");
             bShowDetails.addActionListener((e)->{
                 Form detailColisForm = new Form(BoxLayout.y());
+                                System.out.println(n.getColis().getImage());
                 String url ="http://localhost/MobileImages/"+n.getColis().getImage()+".jpg";
                 System.out.println(url);
                 try {
@@ -81,6 +84,16 @@ public class GUINotifications extends Form {
                 Label colisDateLimit = new Label(n.getColis().getDate_limit());
                 Label colisReward = new Label(""+n.getColis().getReward());
                 Button btnGoBack = new Button("Go back");
+                Button payNow = new Button("Accept The Payement");
+                payNow.addActionListener((evt)->{
+                if(PayementService.getInstance().createPayement(n.getColis(), testUser)){
+                    Dialog.show("Success", "Your payement have been delivered", "Ok", null);
+                    NotificationService.getInstance().deleteNotif(n);
+                    new GUIHomePage(f).show();
+                }else {
+                    Dialog.show("Denied", "Failed To Pay", "Ok", null);
+                }
+                });
                 btnGoBack.addActionListener((event)->{
                     show();
                 });
@@ -90,6 +103,7 @@ public class GUINotifications extends Form {
                         colisDestinationTxt,colisDestination,
                         colisDateLimitTxt,colisDateLimit,
                         colisRewardTxt,colisReward,
+                        payNow,
                         btnGoBack);
                 detailColisForm.show();
             });

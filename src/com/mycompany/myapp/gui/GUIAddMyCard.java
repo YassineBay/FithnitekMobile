@@ -64,12 +64,13 @@ public class GUIAddMyCard extends Form {
         String nameLbl = firstNametxtF.getText();
         String lNameLbl = lastNametxtF.getText();
         String cardNumberLbl = cardNumbertxtF.getText();
-        Card card = new Card(nameLbl, nameLbl, cardNumberLbl);
+        Card card = new Card(nameLbl, lNameLbl, cardNumberLbl);
         //new USer
-        if(PayementService.getInstance().addCard(card,4)){
+        if(PayementService.getInstance().addCard(card,1)){
         Dialog.show("Success", "Your card has been added","OK",null);
            try {
                 db.execute("UPDATE CardDetail SET isRegistred =1");
+                new GUIHomePage(f).show();
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             } 

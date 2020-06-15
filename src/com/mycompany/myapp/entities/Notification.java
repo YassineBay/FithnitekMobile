@@ -11,7 +11,7 @@ package com.mycompany.myapp.entities;
  */
 public class Notification {
     
-    private int id;
+    private String id;
     private String Content;
     private String Sender;
     private String Retriever;
@@ -33,11 +33,11 @@ public class Notification {
         this.Retriever = Retriever;
     }
    
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

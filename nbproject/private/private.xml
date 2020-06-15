@@ -4,8 +4,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/entities/Utilisateur.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/gui/GUIHomePage.java</file>
             <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/services/NotificationService.java</file>
             <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/services/PayementService.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/gui/GUIAddMyCard.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/gui/GUIModifyCard.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/gui/GUIMyRegistredCard.java</file>
             <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/FithnitekMobile/src/com/mycompany/myapp/gui/GUINotifications.java</file>
         </group>
     </open-files>
