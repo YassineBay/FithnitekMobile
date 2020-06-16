@@ -32,6 +32,10 @@ public class GUIHomePage extends Form {
         setTitle("Register Card");
         setLayout(new FlowLayout());
         Button myCardBtn = new Button("My Card");
+        Button packagesBtn = new Button("All Packages");
+        packagesBtn.addActionListener((e)->{
+                new GUIListColis(f).show();
+        });
         myCardBtn.addActionListener((e)->{
             try {
                 Cursor c =  db.executeQuery("Select * from CardDetail");
@@ -51,7 +55,7 @@ public class GUIHomePage extends Form {
         myNotificationsBtn.addActionListener((e)->{        
         new GUINotifications(f).show();
         });
-        addAll(myCardBtn,myNotificationsBtn);
+        addAll(myCardBtn,myNotificationsBtn,packagesBtn);
     }
     
     

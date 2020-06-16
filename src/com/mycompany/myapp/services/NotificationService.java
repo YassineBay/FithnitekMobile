@@ -59,7 +59,7 @@ public class NotificationService {
                 JSONObject jo = new JSONObject(obj);
                 try {
                     JSONObject livreur = jo.getJSONObject("idlivreur");
-                    
+                    JSONObject colisObject = jo.getJSONObject("idcolis");
                     n.setSender(livreur.getString("username"));
                     JSONObject colis = jo.getJSONObject("idcolis");
                     Colis c = new Colis(colis.getInt("id"), colis.getString("depart"), colis.getString("destination"),
@@ -120,6 +120,25 @@ public class NotificationService {
         return resultOK;
            
        }
+     
+     public boolean createNotification(Notification n , int idCurrentUser){
+        String url ="http://127.0.0.1:8000/api/createNotif?idColis="+n.getColis().getId()+"&idUser="+idCurrentUser;
+        System.out.println(url);
+        req.setPost(true);
+        req.setUrl(url);
+        //req.addArgument("first_name", c.getNom());
+        //req.addArgument("last_name", c.getPrenom());
+        //req.addArgument("cardnumber", c.getCardNumber());
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+     }
     
     
 

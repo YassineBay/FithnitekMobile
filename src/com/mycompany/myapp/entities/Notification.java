@@ -16,6 +16,7 @@ public class Notification {
     private String Sender;
     private String Retriever;
     private Colis colis;
+    private Utilisateur livreur;
 
     public String getSender() {
         return Sender;
@@ -56,6 +57,16 @@ public class Notification {
     public void setColis(Colis colis) {
         this.colis = colis;
     }
+
+    public Utilisateur getLivreur() {
+        return livreur;
+    }
+
+    public void setLivreur(Utilisateur livreur) {
+        this.livreur = livreur;
+    }
+    
+    
     
     
     
